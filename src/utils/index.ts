@@ -1,7 +1,7 @@
 import { useEffect,useState } from "react"
 
 //函数里最好不要该百年传入的对象本身
-export const isFalsy = (value: any)=> value === 0 ? false :!value
+export const isFalsy = (value: unknown)=> value === 0 ? false :!value
 export const cleanObject = (object:object) => {
   const result = {...object}
   Object.keys(result).forEach(key => {
@@ -22,7 +22,7 @@ export const useMount = (callback:()=>void) =>{
   },[])
 }
 
-export const useDebounce = (value:any ,delay:number) => {
+export const useDebounce= <T>(value:T ,delay:number):T => {
   const [debouncedValue,setDebouncedVlue] = useState(value)
 
   useEffect(()=>{
