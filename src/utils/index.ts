@@ -23,13 +23,17 @@ export const useMount = (callback:()=>void) =>{
 }
 
 export const useDebounce= <T>(value:T ,delay:number):T => {
-  const [debouncedValue,setDebouncedVlue] = useState(value)
+  const [debouncedValue,setDebouncedValue] = useState(value)
 
-  useEffect(()=>{
+  useEffect(() => {
     const timeout = setTimeout(()=>{
-      setDebouncedVlue(value)
+      setDebouncedValue(value)
     },delay)
     return () => clearTimeout(timeout)
   },[value,delay])
   return debouncedValue
+}
+
+function setDebouncedValue(value: any) {
+  throw new Error("Function not implemented.")
 }
